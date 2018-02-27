@@ -26,16 +26,38 @@ vector<int> GetNext(string str1) {
 	return vec;
 }
 
+int SerchStr_KMP(const string &str1, const string &str2)
+{
+	if (str1.length() == 0 || str2.length() == 0 || str2.length() < 1 || str1.length() < str1.length()) {
+		return -1;
+	}
+	auto next = GetNext(str2);
+
+	int i = 0;
+	int j = 0;
+	while (i < str1.length() && j < str2.length()) {
+		if (str1[i] == str2[j]) {
+			++i;
+			++j;
+		}
+		else {
+			j = next[j];
+			if (j == -1) {
+				j = 0;
+				++i;
+			}
+		}
+	}
+	return j == str2.length() ? i - j : -1;
+}
+
 
 
 int main()
 {
-	string str1 = "ababcababck";
-	vector<int> vec = GetNext(str1);
-	for (auto it = vec.begin(); it != vec.end(); ++it) {
-		cout << *it << " ";
-	}
-	cout << endl;
+	string str1 = "abcabcdabcabce";
+	string str2 = "abcabce";
+	cout << SerchStr_KMP(str1, str2) << endl;
 
 	return 0;
 }
