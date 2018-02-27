@@ -55,8 +55,8 @@ int SerchStr_KMP(const string &str1, const string &str2)
 
 int main()
 {
-	string str1 = "abcabcdabcabce";
-	string str2 = "abcabce";
+	string str1 = "abcabcababaccc";
+	string str2 = "ababa";
 	cout << SerchStr_KMP(str1, str2) << endl;
 
 	return 0;
