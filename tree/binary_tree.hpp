@@ -23,7 +23,7 @@ public:
 
     Bintary_Tree(const std::vector<data_type> &vec,data_type sign);
 
-	void Print_Prev();
+	void Print_Prev()const;
 private:
     static void create_tree_help_func(Node *&p,const std::vector<data_type> &vec,data_type sign,int &pos);
 
@@ -83,11 +83,10 @@ void Bintary_Tree<T>::Print_Prev(Node *p)
 }
 
 template <typename T>
-void Bintary_Tree<T>::Print_Prev()
+void Bintary_Tree<T>::Print_Prev() const
 {
 	Print_Prev(root);
 	std::cout << std::endl;
 }
-
 
 #endif
